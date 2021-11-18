@@ -6,13 +6,15 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.0.62:8848
+        server-addr: 127.0.0.1:8848
+        namespace: root
       config:
         file-extension: yaml
         name: application-nacos
-        server-addr: 192.168.0.62:8848
-  zipkin:
-    base-url: http://192.168.0.62:9411
+        server-addr: 127.0.0.1:8848
+        namespace: root
+    #zipkin:
+   # base-url: http://192.168.0.62:9411
   sleuth:
     sampler:
       probability: 0.1 #设置Sleuth的抽样收集概率
