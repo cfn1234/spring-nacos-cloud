@@ -6,13 +6,11 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
-        namespace: root
+        server-addr: 127.0.0.01:8048
       config:
         file-extension: yaml
         name: application-nacos
-        server-addr: 127.0.0.1:8848
-        namespace: root
+        server-addr: 127.0.0.01:8048
     #zipkin:
    # base-url: http://192.168.0.62:9411
   sleuth:
@@ -26,3 +24,29 @@ management:
   metrics:
     tags:
       application: nacos-consumer
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: SEATA_GROUP    #此处配置自定义的seata事务分组名称
+  enable-auto-data-source-proxy: true    #开启数据库代理
+  service:
+    vgroupMapping:
+      SEATA_GROUP: default
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.01:8048
+      group: "SEATA_GROUP"
+      namespace: "seata"
+      username: nacos
+      password: nacos
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      cluster: default
+      namespace: "seata"
+      username: nacos
+      password: nacos

@@ -6,11 +6,11 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: frps.run:9804
+        server-addr: 127.0.0.1:8048
       config:
         file-extension: yaml
         name: application-nacos
-        server-addr: frps.run:9804
+        server-addr: 127.0.0.1:8048
   #zipkin:
    # base-url: http://192.168.0.62:9411
   sleuth:
